@@ -9,7 +9,12 @@ window.onload = async ()=>{
             let x = parseInt(this.id.replace("btn", ""));
             document.getElementById("sec" + x).style.top = "-100vh";
             document.getElementById("sec" + (x+1)).style.top = "0vh";
-        })
+            if(x == 2){
+                let video = document.querySelector("video");
+                video.style.opacity = "1";
+                video.play();
+            }
+        });
     }
 }
 
