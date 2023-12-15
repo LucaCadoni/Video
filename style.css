@@ -68,13 +68,14 @@ p{
 }
 
 .x-size{
-    font-size: 20vw;
+    font-size: 10vw;
 }
 
 .container{
     display: flex;
     flex-direction: column;
     gap: 10vh;
+    
 }
 
 .arrowContainer{
@@ -134,5 +135,11 @@ p{
 
     100%{
         rotate: 360deg;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .x-size{
+        font-size: 20vw;
     }
 }
