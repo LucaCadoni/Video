@@ -9,15 +9,15 @@ window.onload = async ()=>{
     let sec = document.querySelectorAll("section");
 
     for(var element of sec){
-        element.addEventListener("mousedown", function(e){
+        element.addEventListener("touchstart", function(e){
             scroll = true;
             y = e.clientY;
             yStart = e.clientY;
         });
 
-        element.onmouseup = leave.bind(element);
+        element.ontouchend = leave.bind(element);
 
-        element.addEventListener("mousemove", function(e){
+        element.addEventListener("tiuchmove", function(e){
             if(scroll){
                 console.warn(window.innerHeight);
                 console.log(e.clientY);
@@ -33,7 +33,7 @@ window.onload = async ()=>{
                     console.error("exit");
                     y = 0;
                     yStart = 0;
-                    this.onmouseup();
+                    this.ontouchend();
                 }
             }
         });
