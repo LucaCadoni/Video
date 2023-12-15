@@ -1,0 +1,138 @@
+body{
+    margin: 0;
+    background-image: url("MEDIA/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    cursor: default;
+}
+
+*{
+    font-family: 'Microsoft Yahei';
+    font-weight: bold;
+}
+
+section{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 100vh;
+    position: fixed;
+    transition: top     0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#sec1{
+    top: 0vh;
+}
+
+.text{
+    text-align: center;
+}
+
+.text > p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.red{
+    color: rgb(170, 43, 43);
+}
+
+.green{
+    color: rgb(44, 130, 44);
+}
+
+.white{
+    color: white;
+}
+
+.lightblue{
+    color: rgb(22, 90, 112);
+}
+
+.m-size{
+    font-size: 7vw;
+}
+
+.s-size{
+    font-size: 3vw;
+}
+
+.x-size{
+    font-size: 20vw;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+}
+
+.arrowContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.arrowContainer > p{
+    margin: 2vh;
+}
+
+.arrow{
+    font-size: 10vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#loading{
+    position: absolute;
+    z-index: 99;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s;
+}
+
+.ball{
+    height: 10vw;
+    width: 10vw;
+    border: 1vw dotted darkgray;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    animation: rotate 5s linear infinite;
+}
+
+.ball::after{
+    content: '';
+    height: 4vw;
+    width: 5vw;
+    background-color: white;
+    position: absolute;
+    left: 8vw;
+}
+
+@keyframes rotate{
+    0%{
+        rotate: 0deg;
+    }
+
+    100%{
+        rotate: 360deg;
+    }
+}
