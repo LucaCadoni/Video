@@ -17,7 +17,7 @@ window.onload = async ()=>{
 
         element.ontouchend = leave.bind(element);
 
-        element.addEventListener("tiuchmove", function(e){
+        element.addEventListener("touchmove", function(e){
             if(scroll){
                 console.warn(window.innerHeight);
                 console.log(e.clientY);
