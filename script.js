@@ -10,6 +10,7 @@ window.onload = async ()=>{
 
     for(var element of sec){
         element.addEventListener("touchstart", function(e){
+            alert("deh");
             scroll = true;
             y = e.clientY;
             yStart = e.clientY;
