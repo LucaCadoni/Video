@@ -108,7 +108,7 @@ async function ready(){
         l.style.opacity = "0";
         init();
         await setTimeout(()=>{document.body.removeChild(l)}, 500);
-    }else{
+    }else if(load == 1){
         setTimeout(ready, 10000);
     }
 }
