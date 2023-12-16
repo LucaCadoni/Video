@@ -103,7 +103,7 @@ function leave(){
 
 async function ready(){
     load ++;
-    if(load >= 2){
+    if(load >= 1){
         var l = document.getElementById("loading");
         l.style.opacity = "0";
         await setTimeout(()=>{document.body.removeChild(l)}, 500);
