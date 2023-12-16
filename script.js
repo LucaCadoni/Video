@@ -2,14 +2,16 @@ var scroll = false;
 var y;
 var yStart;
 var pSec;
-var load = 0;
 var video;
 
 //window.addEventListener("load", ready);
-window.addEventListener("load", function(){
+window.addEventListener("load", async function(){
+    var l = document.getElementById("loading");
+    l.style.opacity = "0";
+    await setTimeout(()=>{document.body.removeChild(l)}, 500);
+
     let sec = document.querySelectorAll("section");
     video = document.querySelector("video");
-    video.addEventListener("canplaythrough", ready);
     
 
     for(var element of sec){
@@ -98,14 +100,5 @@ function leave(){
         setTimeout(()=>{
             sec1.style.transition = "";  
         }, 500);
-    }
-}
-
-async function ready(){
-    load ++;
-    if(load >= 1){
-        var l = document.getElementById("loading");
-        l.style.opacity = "0";
-        await setTimeout(()=>{document.body.removeChild(l)}, 500);
     }
 }
