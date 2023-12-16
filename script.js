@@ -4,7 +4,7 @@ var yStart;
 var pSec;
 var video;
 
-//window.addEventListener("load", ready);
+
 window.addEventListener("load", async function(){
     var l = document.getElementById("loading");
     l.style.opacity = "0";
@@ -16,7 +16,6 @@ window.addEventListener("load", async function(){
 
     for(var element of sec){
         element.addEventListener("touchstart", function(e){
-            document.body.innerHTML = "DEH";
             if(this.style.top != "-100vh" && this.style.top != "100vh"){
                 scroll = true;
                 y = e.touches[0].clientY;
