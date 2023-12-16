@@ -15,6 +15,7 @@ window.addEventListener("load", function(){
     for(var element of sec){
         element.addEventListener("touchstart", function(e){
             if(this.style.top != "-100vh" && this.style.top != "100vh"){
+                document.body.innerHTML = "DEH";
                 scroll = true;
                 y = e.touches[0].clientY;
                 yStart = e.touches[0].clientY;
