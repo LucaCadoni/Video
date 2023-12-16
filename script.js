@@ -2,16 +2,19 @@ var scroll = false;
 var y;
 var yStart;
 var pSec;
+var load = 0;
+var video;
 
-window.onload = async ()=>{
-    var l = document.getElementById("loading");
-    l.style.opacity = "0";
-    await setTimeout(()=>{document.body.removeChild(l)}, 500);
+window.addEventListener("load", ready);
+window.addEventListener("load", function(){
     let sec = document.querySelectorAll("section");
+    video = document.querySelector("video");
+    video.addEventListener("canplaythrough", ready);
+    
 
     for(var element of sec){
         element.addEventListener("touchstart", function(e){
-            if(this.id == pSec){
+            if(this.style.top != "-100vh" && this.style.top != "100vh"){
                 scroll = true;
                 y = e.touches[0].clientY;
                 yStart = e.touches[0].clientY;
@@ -41,7 +44,7 @@ window.onload = async ()=>{
             }
         });
     }
-}
+});
 
 window.onselectstart = ()=>{return false;}
 
@@ -55,13 +58,11 @@ function leave(){
     if(y-yStart < -100){
         var sec2 = document.getElementById("sec" + (x+1));
         if(sec2){
-            pSec = "sec" + (x+1);
             sec1.style.top = "-100vh";
             sec2.style.top = "0px";
             sec1.style.transition = "top 1s cubic-bezier(0.075, 0.82, 0.165, 1)";
             sec2.style.transition = "top 1s cubic-bezier(0.075, 0.82, 0.165, 1)";
             if(x == 2){
-                let video = document.querySelector("video");
                 video.style.opacity = "1";
                 video.play();
             }
@@ -74,7 +75,6 @@ function leave(){
         }
     }else if(y-yStart > 100){
         var sec2 = document.getElementById("sec" + (x-1));
-        pSec = "sec" + (x-1);
         if(sec2){
             sec1.style.top = "100vh";
             sec2.style.top = "0px";
@@ -97,5 +97,14 @@ function leave(){
         setTimeout(()=>{
             sec1.style.transition = "";  
         }, 500);
+    }
+}
+
+async function ready(){
+    load ++;
+    if(load >= 2){
+        var l = document.getElementById("loading");
+        l.style.opacity = "0";
+        await setTimeout(()=>{document.body.removeChild(l)}, 500);
     }
 }
