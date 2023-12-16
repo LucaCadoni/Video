@@ -29,8 +29,8 @@ window.onselectstart = ()=>{return false;}
 function start(e){
     if(this.style.top != "-100vh" && this.style.top != "100vh"){
         scroll = true;
-        y = e.touches[0].clientY || e.clientY;
-        yStart = e.touches[0].clientY || e.clientY;
+        (e.touches[0].clientY ? y=e.touches[0].clientY : y=e.clientY);
+        yStart = y;
     }
 }
 
@@ -46,7 +46,7 @@ function move(e){
                 sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.touches[0].clientY - y)).toString() + "px";
             else
                 sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.clientY - y)).toString() + "px";
-            y = e.touches[0].clientY || e.clientY;
+            (e.touches[0].clientY ? y=e.touches[0].clientY : y=e.clientY);
         }else{
             console.error("exit");
             y = 0;
