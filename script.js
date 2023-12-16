@@ -28,6 +28,7 @@ window.onselectstart = ()=>{return false;}
 
 function start(e){
     if(this.style.top != "-100vh" && this.style.top != "100vh"){
+        this.style.transition = "none";
         scroll = true;
         (e.touches ? y=e.touches[0].clientY : y=e.clientY);
         yStart = y;
@@ -70,16 +71,11 @@ function leave(){
         if(sec2){
             sec1.style.top = "-100vh";
             sec2.style.top = "0px";
-            sec1.style.transition = "top 1s cubic-bezier(0.075, 0.82, 0.165, 1)";
-            sec2.style.transition = "top 1s cubic-bezier(0.075, 0.82, 0.165, 1)";
+            sec1.style.transition = "";
             if(x == 2){
                 video.style.opacity = "1";
                 video.play();
             }
-            setTimeout(()=>{
-                sec1.style.transition = "";
-                sec2.style.transition = "";
-            }, 1000);
         }else{
             stop = true;
         }
@@ -88,12 +84,7 @@ function leave(){
         if(sec2){
             sec1.style.top = "100vh";
             sec2.style.top = "0px";
-            sec1.style.transition = "top 1s cubic-bezier(0.075, 0.82, 0.165, 1)";
-            sec2.style.transition = "top 1s cubic-bezier(0.075, 0.82, 0.165, 1)";
-            setTimeout(()=>{
-                sec1.style.transition = "";
-                sec2.style.transition = "";
-            }, 1000);
+            sec1.style.transition = "";
         }else{
             stop = true;
         }
@@ -105,7 +96,7 @@ function leave(){
         sec1.style.top = "0px";
         sec1.style.transition = "top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1)";
         setTimeout(()=>{
-            sec1.style.transition = "";  
+            sec1.style.transition = "";
         }, 500);
     }
 }

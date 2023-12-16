@@ -20,7 +20,7 @@ section{
     justify-content: center;
     top: 100vh;
     position: fixed;
-    /*transition: top 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);*/
+    transition: top 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 #sec1{
