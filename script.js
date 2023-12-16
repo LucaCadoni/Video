@@ -10,9 +10,11 @@ window.onload = async ()=>{
 
     for(var element of sec){
         element.addEventListener("touchstart", function(e){
-            scroll = true;
-            y = e.touches[0].clientY;
-            yStart = e.touches[0].clientY;
+            if(!this.style.transition){
+                scroll = true;
+                y = e.touches[0].clientY;
+                yStart = e.touches[0].clientY;
+            }
         });
 
         element.ontouchend = leave.bind(element);
