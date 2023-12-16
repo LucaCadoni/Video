@@ -36,10 +36,9 @@ function start(e){
 }
 
 function move(e){
-    let x = parseInt(this.id.replace("sec", ""));
-    if(x != 1)
-        e.preventDefault();
+    e.preventDefault();
     if(scroll){
+        let x = parseInt(this.id.replace("sec", ""));
         if((e.touches && (e.touches[0].clientY < window.innerHeight-50 && e.touches[0].clientY > 50)) || (e.clientY < window.innerHeight-50 && e.clientY > 50)){
             let sec1 = document.getElementById("sec" + x);
 
