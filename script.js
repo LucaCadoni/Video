@@ -15,15 +15,9 @@ window.addEventListener("load", async function(){
     
 
     for(var element of sec){
-        element.addEventListener("touchstart", function(e){
-            
-        });
-
+        element.addEventListener("touchstart", start.bind(element));
         element.ontouchend = leave.bind(element);
-
-        element.addEventListener("touchmove", function(e){
-            
-        });
+        element.addEventListener("touchmove", move.bind(element));
     }
 });
 
