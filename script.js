@@ -10,13 +10,13 @@ window.onload = async ()=>{
 
     for(var element of sec){
         element.addEventListener("touchstart", function(e){
-            alert("deh");
+            document.body.innerHTML = "TOCCO";
             scroll = true;
-            y = e.clientY;
-            yStart = e.clientY;
+            y = e.touches[0].clientY;
+            yStart = e.touches[0].clientY;
         });
 
-        element.ontouchend = leave.bind(element);
+        /*element.ontouchend = leave.bind(element);
 
         element.addEventListener("touchmove", function(e){
             if(scroll){
@@ -37,7 +37,7 @@ window.onload = async ()=>{
                     this.ontouchend();
                 }
             }
-        });
+        });*/
     }
 }
 
