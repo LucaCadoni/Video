@@ -3,17 +3,17 @@ var y;
 var yStart;
 var pSec;
 var video;
+var load = 0;
 
 
-window.addEventListener("load", async function(){
-    var l = document.getElementById("loading");
-    l.style.opacity = "0";
-    await setTimeout(()=>{document.body.removeChild(l)}, 500);
-
-    let sec = document.querySelectorAll("section");
+window.addEventListener("load", ready);
+window.addEventListener("load", ()=>{
     video = document.querySelector("video");
-    
+    video.addEventListener("canplaythrough", ready);
+});
 
+function init(){
+    let sec = document.querySelectorAll("section");
     for(var element of sec){
         element.addEventListener("touchstart", start.bind(element));
         element.addEventListener("mousedown", start.bind(element));
@@ -22,7 +22,7 @@ window.addEventListener("load", async function(){
         element.addEventListener("touchmove", move.bind(element));
         element.addEventListener("mousemove", move.bind(element));
     }
-});
+}
 
 window.onselectstart = ()=>{return false;}
 
@@ -105,5 +105,15 @@ function leave(){
         setTimeout(()=>{
             sec1.style.transition = "";  
         }, 500);
+    }
+}
+
+async function ready(){
+    load ++;
+    if(load >= 2){
+        var l = document.getElementById("loading");
+        l.style.opacity = "0";
+        init();
+        await setTimeout(()=>{document.body.removeChild(l)}, 500);
     }
 }
