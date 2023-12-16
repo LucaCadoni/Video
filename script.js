@@ -35,10 +35,11 @@ function start(e){
 }
 
 function move(e){
-    e.preventDefault();
+    let x = parseInt(this.id.replace("sec", ""));
+    if(x != 1)
+        e.preventDefault();
     if(scroll){
         if((e.touches && (e.touches[0].clientY < window.innerHeight-50 && e.touches[0].clientY > 50)) || (e.clientY < window.innerHeight-50 && e.clientY > 50)){
-            let x = parseInt(this.id.replace("sec", ""));
             let sec1 = document.getElementById("sec" + x);
 
             if(!sec1.style.top) sec1.style.top = "0px";
