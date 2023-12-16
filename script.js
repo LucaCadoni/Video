@@ -1,6 +1,7 @@
 var scroll = false;
 var y;
 var yStart;
+var pSec;
 
 window.onload = async ()=>{
     var l = document.getElementById("loading");
@@ -10,7 +11,7 @@ window.onload = async ()=>{
 
     for(var element of sec){
         element.addEventListener("touchstart", function(e){
-            if(!this.style.transition){
+            if(this.id == pSec){
                 scroll = true;
                 y = e.touches[0].clientY;
                 yStart = e.touches[0].clientY;
@@ -54,6 +55,7 @@ function leave(){
     if(y-yStart < -100){
         var sec2 = document.getElementById("sec" + (x+1));
         if(sec2){
+            pSec = "sec" + (x+1);
             sec1.style.top = "-100vh";
             sec2.style.top = "0px";
             sec1.style.transition = "top 1s cubic-bezier(0.075, 0.82, 0.165, 1)";
@@ -72,6 +74,7 @@ function leave(){
         }
     }else if(y-yStart > 100){
         var sec2 = document.getElementById("sec" + (x-1));
+        pSec = "sec" + (x-1);
         if(sec2){
             sec1.style.top = "100vh";
             sec2.style.top = "0px";
@@ -82,7 +85,7 @@ function leave(){
                 sec2.style.transition = "";
             }, 1000);
         }else{
-            stop = true
+            stop = true;
         }
     }else{
         stop = true;
