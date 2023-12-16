@@ -29,24 +29,24 @@ window.onselectstart = ()=>{return false;}
 function start(e){
     if(this.style.top != "-100vh" && this.style.top != "100vh"){
         scroll = true;
-        (e.touches[0].clientY ? y=e.touches[0].clientY : y=e.clientY);
+        (e.touches ? y=e.touches[0].clientY : y=e.clientY);
         yStart = y;
     }
 }
 
 function move(e){
     if(scroll){
-        if((e.touches[0].clientY && (e.touches[0].clientY < window.innerHeight-50 && e.touches[0].clientY > 50)) || (e.clientY(e.clientY < window.innerHeight-50 && e.clientY > 50))){
+        if((e.touches && (e.touches[0].clientY < window.innerHeight-50 && e.touches[0].clientY > 50)) || (e.clientY < window.innerHeight-50 && e.clientY > 50)){
             let x = parseInt(this.id.replace("sec", ""));
             let sec1 = document.getElementById("sec" + x);
 
             if(!sec1.style.top) sec1.style.top = "0px";
             
-            if(e.touches[0].clientY)
+            if(e.touches)
                 sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.touches[0].clientY - y)).toString() + "px";
             else
                 sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.clientY - y)).toString() + "px";
-            (e.touches[0].clientY ? y=e.touches[0].clientY : y=e.clientY);
+            (e.touches ? y=e.touches[0].clientY : y=e.clientY);
         }else{
             console.error("exit");
             y = 0;
