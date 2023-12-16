@@ -9,7 +9,7 @@ var load = 0;
 window.addEventListener("load", ready);
 window.addEventListener("load", ()=>{
     video = document.querySelector("video");
-    video.addEventListener("canplaythrough", ready);
+    video.addEventListener("canplay", ready);
 });
 
 function init(){
@@ -35,6 +35,7 @@ function start(e){
 }
 
 function move(e){
+    e.preventDefault();
     if(scroll){
         if((e.touches && (e.touches[0].clientY < window.innerHeight-50 && e.touches[0].clientY > 50)) || (e.clientY < window.innerHeight-50 && e.clientY > 50)){
             let x = parseInt(this.id.replace("sec", ""));
