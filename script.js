@@ -111,8 +111,8 @@ function leave(){
 async function ready(){
     load ++;
     console.log("load " + load);
-    if(load >= 2){
-        var l = document.getElementById("loading");
+    var l = document.getElementById("loading");
+    if(load >= 2 && l){
         l.style.opacity = "0";
         init();
         await setTimeout(()=>{document.body.removeChild(l)}, 500);
