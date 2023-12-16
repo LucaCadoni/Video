@@ -110,6 +110,7 @@ function leave(){
 
 async function ready(){
     load ++;
+    console.log("load " + load);
     if(load >= 2){
         var l = document.getElementById("loading");
         l.style.opacity = "0";
