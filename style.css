@@ -109,7 +109,7 @@ p{
 .ball{
     height: 10vw;
     width: 10vw;
-    border: 1vw dotted darkgray;
+    border: 2.5vw dotted darkgray;
     position: relative;
     display: flex;
     align-items: center;
@@ -120,7 +120,7 @@ p{
 
 .ball::after{
     content: '';
-    height: 4vw;
+    height: 5vw;
     width: 5vw;
     background-color: white;
     position: absolute;
