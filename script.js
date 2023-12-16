@@ -5,7 +5,7 @@ var pSec;
 var load = 0;
 var video;
 
-window.addEventListener("load", ready);
+//window.addEventListener("load", ready);
 window.addEventListener("load", function(){
     let sec = document.querySelectorAll("section");
     video = document.querySelector("video");
