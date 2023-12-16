@@ -16,39 +16,48 @@ window.addEventListener("load", async function(){
 
     for(var element of sec){
         element.addEventListener("touchstart", function(e){
-            if(this.style.top != "-100vh" && this.style.top != "100vh"){
-                scroll = true;
-                y = e.touches[0].clientY;
-                yStart = e.touches[0].clientY;
-            }
+            
         });
 
         element.ontouchend = leave.bind(element);
 
         element.addEventListener("touchmove", function(e){
-            if(scroll){
-                console.warn(window.innerHeight);
-                console.log(e.touches[0].clientY);
-                if(e.touches[0].clientY < window.innerHeight-50 && e.touches[0].clientY > 50){
-                    let x = parseInt(this.id.replace("sec", ""));
-                    let sec1 = document.getElementById("sec" + x);
-    
-                    if(!sec1.style.top) sec1.style.top = "0px";
-                    
-                    sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.touches[0].clientY - y)).toString() + "px";
-                    y = e.touches[0].clientY;
-                }else{
-                    console.error("exit");
-                    y = 0;
-                    yStart = 0;
-                    this.ontouchend();
-                }
-            }
+            
         });
     }
 });
 
 window.onselectstart = ()=>{return false;}
+
+function start(e){
+    if(this.style.top != "-100vh" && this.style.top != "100vh"){
+        scroll = true;
+        y = e.touches[0].clientY || e.clientY;
+        yStart = e.touches[0].clientY || e.clientY;
+    }
+}
+
+function move(e){
+    if(scroll){
+        if((e.touches[0].clientY < window.innerHeight-50 && e.touches[0].clientY > 50) || (e.clientY < window.innerHeight-50 && e.clientY > 50)){
+            let x = parseInt(this.id.replace("sec", ""));
+            let sec1 = document.getElementById("sec" + x);
+
+            if(!sec1.style.top) sec1.style.top = "0px";
+            
+            if(e.touches[0].clientY)
+                sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.touches[0].clientY - y)).toString() + "px";
+            else
+                sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.clientY - y)).toString() + "px";
+            y = e.touches[0].clientY || e.clientY;
+        }else{
+            console.error("exit");
+            y = 0;
+            yStart = 0;
+            this.ontouchend();
+        }
+    }
+}
 
 function leave(){
     console.log(this);
