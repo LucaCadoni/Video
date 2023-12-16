@@ -16,8 +16,11 @@ window.addEventListener("load", async function(){
 
     for(var element of sec){
         element.addEventListener("touchstart", start.bind(element));
+        element.addEventListener("mousedown", start.bind(element));
         element.ontouchend = leave.bind(element);
+        element.onmouseup = leave.bind(element);
         element.addEventListener("touchmove", move.bind(element));
+        element.addEventListener("mousemove", move.bind(element));
     }
 });
 
