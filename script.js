@@ -16,20 +16,20 @@ window.onload = async ()=>{
             yStart = e.touches[0].clientY;
         });
 
-        /*element.ontouchend = leave.bind(element);
+        element.ontouchend = leave.bind(element);
 
         element.addEventListener("touchmove", function(e){
             if(scroll){
                 console.warn(window.innerHeight);
-                console.log(e.clientY);
-                if(e.clientY < window.innerHeight-50 && e.clientY > 50){
+                console.log(e.touches[0].clientY);
+                if(e.touches[0].clientY < window.innerHeight-50 && e.touches[0].clientY > 50){
                     let x = parseInt(this.id.replace("sec", ""));
                     let sec1 = document.getElementById("sec" + x);
     
                     if(!sec1.style.top) sec1.style.top = "0px";
                     
-                    sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.clientY - y)).toString() + "px";
-                    y = e.clientY;
+                    sec1.style.top = (parseInt(sec1.style.top.replace("px", "")) + (e.touches[0].clientY - y)).toString() + "px";
+                    y = e.touches[0].clientY;
                 }else{
                     console.error("exit");
                     y = 0;
@@ -37,7 +37,7 @@ window.onload = async ()=>{
                     this.ontouchend();
                 }
             }
-        });*/
+        });
     }
 }
 
